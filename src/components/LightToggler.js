@@ -6,14 +6,15 @@ const Light = () => {
   const [isActive, setIsActive] = useState(false);
   const [flashRelevant, setFlashRelevant] = useState(false);
 
+  useEffect(() => {
+    setIsActive(active);
+    alert(isActive);
+  }, [active]);
+
   let active = false;
 
   useEffect(() => {
     const SUPPORTS_MEDIA_DEVICES = "mediaDevices" in navigator;
-
-    // console.log(navigator.mediaDevices.ondevicechange);
-
-    // console.log("support", SUPPORTS_MEDIA_DEVICES);
 
     if (SUPPORTS_MEDIA_DEVICES) {
       navigator.mediaDevices.enumerateDevices().then((devices) => {
@@ -50,9 +51,7 @@ const Light = () => {
                   track.applyConstraints({
                     advanced: [{ torch: !active }],
                   });
-                  // setIsActive((status) => (status = !status));
                   active = !active;
-                  alert("toggle in");
                 });
               });
             setFlashRelevant(true);
@@ -74,10 +73,7 @@ const Light = () => {
     <>
       {flashRelevant ? (
         <div className="light-toggler">
-          <button
-            className={`switch ${isActive ? "" : "active"}`}
-            // onClick={toggleState}
-          >
+          <button className={`switch ${isActive ? "" : "active"}`}>
             {isActive}
             <span></span>
           </button>
