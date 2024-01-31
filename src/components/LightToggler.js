@@ -8,7 +8,7 @@ const Light = () => {
   let active = false;
 
   function toggleActive() {
-    setIsActive(!isActive);
+    setIsActive((data) => (data = !data));
     alert(isActive);
   }
 
