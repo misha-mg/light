@@ -7,10 +7,10 @@ const Light = () => {
   const [flashRelevant, setFlashRelevant] = useState(false);
   let active = false;
 
-  useEffect(() => {
-    setIsActive(active);
+  function toggleActive() {
+    setIsActive(!isActive);
     alert(isActive);
-  }, [active]);
+  }
 
   useEffect(() => {
     const SUPPORTS_MEDIA_DEVICES = "mediaDevices" in navigator;
@@ -51,6 +51,7 @@ const Light = () => {
                     advanced: [{ torch: !active }],
                   });
                   active = !active;
+                  toggleActive();
                 });
               });
             setFlashRelevant(true);
