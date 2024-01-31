@@ -9,7 +9,6 @@ const Light = () => {
 
   function toggleActive() {
     setIsActive((data) => (data = !data));
-    alert(isActive);
   }
 
   useEffect(() => {
