@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Docker
+.dockerignore
+docker-compose.yml
+Dockerfile
+
+# git
+.git
+.gitignore
+README.md
+
+# IntelliJ
+.idea
+
+# JS
+.next
+node_modules
+.prettierignore
+.prettierrc
+
+# TS
+*.tsbuildinfo
+
+# BitBucket
+bitbucket-pipelines.yml
+

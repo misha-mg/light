@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  font-size: calc(8px + 0.5vw);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+
+    --dark: #4B4C4E;
+    --bright: #eeeeee;
+    --blue: #27272e;
+    --yellow: #FFE487;
+    --red: #D9455F;
+    --green: #56C97B;
+  }
+}
+
+body {
+  color: var(--bright);
+  background: var(--dark);
+
+}
+
+main {
+  max-width: 1400px;
+  padding: 2rem 0 0;
+  width: 70%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+canvas {
+  box-shadow: none !important;
+}
+
+.alert-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s;
+  animation-delay: 2s;
+}
+.alert-wrapper.active {
+  opacity: 1;
+}
+
+.alert {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 50%;
+}
+
+.alert-successTakeMessage,
+.alert-successPostMessage,
+.alert-serverError,
+.alert-handsError {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: var(--blue);
+  color: var(--bright);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  border: solid 2px #242424;
+}
+
+.alert-handsError {
+  background-color: var(--red);
+  color: var(--bright);
+  box-shadow: rgba(211, 0, 0, 0.24) 0px 3px 8px;
+}
+.alert-serverError {
+  background-color: var(--red);
+  color: var(--bright);
+  box-shadow: rgba(211, 0, 0, 0.24) 0px 3px 8px;
+}
+.alert-successTakeMessage {
+  background-color: var(--green);
+  color: var(--dark);
+  box-shadow: rgba(115, 141, 0, 0.24) 0px 3px 8px;
+}
+.alert-successPostMessage {
+  background-color: var(--green);
+  color: var(--dark);
+  box-shadow: rgba(115, 141, 0, 0.24) 0px 3px 8px;
+}
+
+.alert-title {
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.alert-text {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.timer {
+  position: absolute;
+  top: 1.3rem;
+  left: 1.5rem;
+  z-index: 5;
+  width: 200px;
+  background-color: var(--dark);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+  border: solid 2px #242424;
+}
+
+.timer-container {
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--bright);
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.timer p {
+  font-size: 0.9rem;
+  width: 80%;
+}
+
+.timer span {
+  width: 20%;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.light-container {
+  display: none;
+  z-index: 10;
+  position: absolute;
+  width: 90%;
+  height: calc(100% - 2rem);
+}
+.light-toggler button {
+  min-width: 120px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: var(--blue);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  border-radius: 10px;
+  border: solid 2px var(--yellow);
+  transition: all 0.2s;
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+}
+.light-toggler button > span::before {
+  content: "FLASH OFF";
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--yellow);
+}
+
+.light-toggler button.active {
+  background-color: var(--yellow);
+  box-shadow: rgba(206, 193, 16, 0.466) 0px 2px 4px 0px, rgba(230, 255, 7, 0.32) 0px 2px 16px 0px;
+  border: solid 2px var(--blue);
+}
+.light-toggler button.active > span::before {
+  content: "FLASH ON";
+  color: var(--blue);
+}
+
+@media screen and (max-width: 890px) {
+  .light-container {
+    display: block;
+  }
+  main {
+    padding: 2rem 0 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  canvas {
+    height: auto !important;
+  }
+  video {
+    height: auto !important;
+  }
+  .alert {
+    width: 90%;
+  }
+  .alert-title {
+    font-size: 1.8rem;
+  }
+  .alert-text {
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .timer {
+    width: 80%;
+  }
+  .timer p {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  .timer span {
+    width: 20%;
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main {
+    padding: 2rem 0 0;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .light-container {
+    width: 80%;
+  }
+}
