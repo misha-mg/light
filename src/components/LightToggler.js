@@ -5,13 +5,12 @@ import { useEffect, useState } from "react";
 const Light = () => {
   const [isActive, setIsActive] = useState(false);
   const [flashRelevant, setFlashRelevant] = useState(false);
+  let active = false;
 
   useEffect(() => {
     setIsActive(active);
     alert(isActive);
   }, [active]);
-
-  let active = false;
 
   useEffect(() => {
     const SUPPORTS_MEDIA_DEVICES = "mediaDevices" in navigator;
