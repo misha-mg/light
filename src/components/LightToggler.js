@@ -49,7 +49,7 @@ const Light = () => {
                     advanced: [{ torch: !isActive }],
                   });
                   setIsActive((status) => (status = !status));
-                  console.log("toggle in");
+                  alert("toggle in");
                 });
               });
             setFlashRelevant(true);
