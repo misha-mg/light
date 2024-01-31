@@ -6,6 +6,8 @@ const Light = () => {
   const [isActive, setIsActive] = useState(false);
   const [flashRelevant, setFlashRelevant] = useState(false);
 
+  let active = false;
+
   useEffect(() => {
     const SUPPORTS_MEDIA_DEVICES = "mediaDevices" in navigator;
 
@@ -46,9 +48,10 @@ const Light = () => {
                 console.log(btn);
                 btn.addEventListener("click", function () {
                   track.applyConstraints({
-                    advanced: [{ torch: !isActive }],
+                    advanced: [{ torch: !active }],
                   });
-                  setIsActive((status) => (status = !status));
+                  // setIsActive((status) => (status = !status));
+                  active = !active;
                   alert("toggle in");
                 });
               });
